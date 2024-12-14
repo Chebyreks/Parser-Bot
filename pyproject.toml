@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "parser-bot"
+version = "0.1.0"
+description = ""
+authors = ["Chebyreks <sergius1742@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiogram = "^3.15.0"
+sqlalchemy = "^2.0.36"
+alembic = "^1.14.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

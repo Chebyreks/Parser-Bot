@@ -11,8 +11,8 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 from alembic import context
 
 from parser_bot.core.db import Base
-from parser_bot.models.user import User
-
+from parser_bot.models.bestoffer import BestOffer
+ 
 load_dotenv(".env")
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

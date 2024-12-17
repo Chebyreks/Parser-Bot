@@ -8,6 +8,6 @@ class Settings(BaseSettings):
     telegram_bot_token: str
 
     class Config:
-        env_file = ".env"
+        env_file = "parser_bot/utils/.env"
 
 settings = Settings()

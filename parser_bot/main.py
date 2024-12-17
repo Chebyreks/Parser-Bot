@@ -5,7 +5,7 @@ from aiogram import Bot, Dispatcher
 from parser_bot.core.config import settings
 from parser_bot.core.db import AsyncSessionLocal
 from parser_bot.core.db_middleware import DatabaseMiddleware
-from parser_bot.handlers.commands_router import router as commands_router
+from parser_bot.handlers.commands import router as commands
 
 
 async def main():
@@ -13,7 +13,7 @@ async def main():
     dp = Dispatcher()
 
     dp.update.middleware(DatabaseMiddleware(session_pool=AsyncSessionLocal))
-    dp.include_routers(commands_router)
+    dp.include_routers(commands)
 
     await dp.start_polling(bot)
 

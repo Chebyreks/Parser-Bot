@@ -61,7 +61,7 @@ async def parse_offer(url: str) -> BestOfferBase:
 
         link = block["href"] if block else None
 
-        score = round(1000 * (1 / (int)(price)) + (account_age_num * 1) + ((int)(rating) * 500) + ((int)(reviews_count) * 4), 2) # Вычисление рейтинга 
+        score = round(1000 * (1 / (int)(price)) + (account_age_num * 100) + ((int)(rating) * 500) + ((int)(reviews_count) * 4), 2) # Вычисление рейтинга 
 
         if score > bestoffer_score:
             bestoffer.offer = offer

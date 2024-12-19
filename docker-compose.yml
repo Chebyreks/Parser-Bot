@@ -1,0 +1,36 @@
+
+services:
+  postgres:
+    hostname: postgres
+    image: postgres:16
+    container_name: postgres
+    env_file:
+      - parser_bot/utils/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: funpay_bot/bot:latest
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    ports:
+      - "5000:5000"

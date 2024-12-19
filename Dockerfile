@@ -11,6 +11,8 @@ COPY parser_bot/. /parser_bot
 COPY poetry.lock pyproject.toml /
 RUN poetry install --no-dev --no-interaction
 
+RUN .venv/bin/alembic upgrade head
+
 CMD ["poetry", "run", "python", "-m", "parser_bot.main"]
 
 
